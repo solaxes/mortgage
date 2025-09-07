@@ -1,4 +1,4 @@
-// types/react-awesome-slider-autoplay.d.ts
+// src/types/react-awesome-slider-autoplay.d.ts
 declare module "react-awesome-slider/dist/autoplay" {
   import type { ComponentType } from "react";
   import type { AwesomeSliderProps } from "react-awesome-slider";
@@ -9,8 +9,10 @@ declare module "react-awesome-slider/dist/autoplay" {
     interval?: number;
   }
 
-  // HOC that returns a component accepting AutoplayProps
-  export default function withAutoplay<T extends ComponentType<any>>(
-    Component: T
-  ): ComponentType<AutoplayProps>;
+  // No `any`: constrain to the real prop type the HOC expects/returns
+  const withAutoplay: (
+    Component: ComponentType<AwesomeSliderProps>
+  ) => ComponentType<AutoplayProps>;
+
+  export default withAutoplay;
 }

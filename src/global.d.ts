@@ -10,7 +10,8 @@ declare module "react-awesome-slider/dist/autoplay" {
   }
 
   const withAutoplay: (
-    Comp: ComponentType<any>
+    Comp: ComponentType<AwesomeSliderProps>
   ) => ComponentType<AutoplayProps>;
+
   export default withAutoplay;
 }
