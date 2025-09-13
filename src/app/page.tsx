@@ -35,7 +35,7 @@ export default function Home() {
           items={[
             { value: "$2.0B+", label: "Total funded historically" },
             { value: "24+", label: "Years in market" },
-            { value: "TSX: AI", label: "Publicly listed MIC" },
+            { value: "TSX: MAR", label: "Publicly listed MIC" },
             { value: "2,000+", label: "Mortgages funded" },
           ]}
         />
