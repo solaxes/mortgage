@@ -191,8 +191,8 @@ export default function OurTeam() {
               </div>
               <h3 className="text-xl font-semibold mb-3">Collaboration</h3>
               <p className="text-muted-foreground">
-                We work together as a team, leveraging each other's strengths to
-                deliver exceptional results.
+                We work together as a team, leveraging each other&apos;s
+                strengths to deliver exceptional results.
               </p>
             </div>
             <div className="text-center group">

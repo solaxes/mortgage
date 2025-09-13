@@ -73,7 +73,7 @@ export default function ContactUs() {
         setSubmitStatus("error");
         setSubmitMessage(result.error || "Failed to send message");
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus("error");
       setSubmitMessage("Network error. Please try again.");
     } finally {

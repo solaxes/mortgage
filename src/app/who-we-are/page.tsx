@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import ScrollAnimation from "@/components/ui/scroll-animation";
 import TeamCarousel from "@/components/ui/team-carousel";
 import {

@@ -10,15 +10,6 @@ import {
   UsersIcon,
   UserCogIcon,
   Goal,
-  Landmark,
-  Building2,
-  Home,
-  FileText,
-  BarChart3,
-  Newspaper,
-  ScrollText,
-  ShieldCheck,
-  LineChart,
   MenuIcon,
   Moon,
   Sun,
@@ -49,13 +40,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 import Logo from "@/assets/logo.png";
 import LightLogo from "@/assets/LightLogo.png";

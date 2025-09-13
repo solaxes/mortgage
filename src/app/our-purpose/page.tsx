@@ -167,7 +167,7 @@ export default function OurPurpose() {
                     Community Impact
                   </h3>
                   <p className="text-muted-foreground">
-                    We're committed to supporting projects that contribute
+                    We&apos;re committed to supporting projects that contribute
                     positively to Canadian communities and economic growth.
                   </p>
                 </div>
