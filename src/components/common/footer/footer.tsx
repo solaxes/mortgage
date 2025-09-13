@@ -5,6 +5,7 @@ import Image from "next/image";
 import Logo from "@/assets/logo.png";
 import LightLogo from "@/assets/LightLogo.png";
 import { useTheme } from "next-themes";
+import ClientOnly from "@/components/ui/client-only";
 
 function Footer() {
   const { theme } = useTheme();
@@ -15,11 +16,21 @@ function Footer() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
             <Link href="/" className="inline-block">
-              <Image
-                src={isDark ? LightLogo : Logo}
-                alt="Mortgage Arsenal"
-                className="h-10 w-auto"
-              />
+              <ClientOnly
+                fallback={
+                  <Image
+                    src={Logo}
+                    alt="Mortgage Arsenal"
+                    className="h-10 w-auto"
+                  />
+                }
+              >
+                <Image
+                  src={isDark ? LightLogo : Logo}
+                  alt="Mortgage Arsenal"
+                  className="h-10 w-auto"
+                />
+              </ClientOnly>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground max-w-md">
               Alternative real estate lender focused on reliability,

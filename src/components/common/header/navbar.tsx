@@ -13,6 +13,9 @@ import {
   MenuIcon,
   Moon,
   Sun,
+  X,
+  Home,
+  MessageCircle,
   type LucideIcon,
 } from "lucide-react";
 
@@ -26,24 +29,12 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 import Logo from "@/assets/logo.png";
 import LightLogo from "@/assets/LightLogo.png";
 import EnhancedMortgageCalculator from "@/components/ui/enhanced-mortgage-calculator";
+import ClientOnly from "@/components/ui/client-only";
 
 const aboutLinks: {
   title: string;
@@ -87,11 +78,21 @@ export function Navbar() {
       <div className="mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Brand */}
         <Link href="/" className="font-semibold">
-          <Image
-            src={theme === "dark" ? LightLogo : Logo}
-            alt="Mortgage Arsenal"
-            className="h-14 w-auto"
-          />
+          <ClientOnly
+            fallback={
+              <Image
+                src={Logo}
+                alt="Mortgage Arsenal"
+                className="h-14 w-auto"
+              />
+            }
+          >
+            <Image
+              src={theme === "dark" ? LightLogo : Logo}
+              alt="Mortgage Arsenal"
+              className="h-14 w-auto"
+            />
+          </ClientOnly>
         </Link>
 
         {/* Desktop nav */}
@@ -145,16 +146,18 @@ export function Navbar() {
                 <EnhancedMortgageCalculator />
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="cursor-pointer"
-                  onClick={() => setTheme(isDark ? "light" : "dark")}
-                >
-                  <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-                  <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
-                  <span className="sr-only">Toggle theme</span>
-                </Button>
+                <ClientOnly fallback={<div className="h-9 w-9" />}>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="cursor-pointer"
+                    onClick={() => setTheme(isDark ? "light" : "dark")}
+                  >
+                    <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
+                    <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+                    <span className="sr-only">Toggle theme</span>
+                  </Button>
+                </ClientOnly>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
@@ -176,93 +179,162 @@ function MobileNav({ pathname }: { pathname?: string | null }) {
   const isDark = theme === "dark";
   const [open, setOpen] = React.useState(false);
 
+  const closeMenu = () => setOpen(false);
+
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
-        aria-label="Open menu"
-        className="inline-flex h-9 w-9 items-center justify-center rounded-md border bg-background hover:bg-accent"
+        aria-label="Open navigation menu"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border/50 bg-background/80 backdrop-blur-sm hover:bg-accent/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/20"
       >
         <MenuIcon className="h-5 w-5" aria-hidden="true" />
       </SheetTrigger>
-      <SheetContent side="left" className="w-[88vw] sm:max-w-sm">
-        <SheetHeader className="text-left">
-          <SheetTitle>Menu</SheetTitle>
-        </SheetHeader>
 
-        <div className="mt-4 flex flex-col gap-2">
-          {/* Top-level links */}
-          <Link
-            href="/"
-            className={`rounded-md px-3 py-2 text-sm ${
-              isActive("/") ? "bg-accent font-semibold" : "hover:bg-accent"
-            }`}
-            aria-current={isActive("/") ? "page" : undefined}
-            onClick={() => setOpen(false)}
+      <SheetContent
+        side="right"
+        className="w-full max-w-sm p-0 bg-background/95 backdrop-blur-xl border-l border-border/50"
+      >
+        {/* Header with Logo and Close */}
+        <div className="flex items-center justify-between p-6 border-b border-border/50">
+          <ClientOnly
+            fallback={
+              <Image src={Logo} alt="Mortgage Arsenal" className="h-8 w-auto" />
+            }
           >
-            Home
-          </Link>
-
-          {/* About group as accordion */}
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="about">
-              <AccordionTrigger className="rounded-md px-3 py-2 text-sm hover:no-underline hover:bg-accent">
-                About
-              </AccordionTrigger>
-              <AccordionContent className="px-1">
-                <ul className="flex flex-col gap-1">
-                  {aboutLinks.map(
-                    ({ title, href, icon: Icon, description }) => (
-                      <li key={title}>
-                        <Link
-                          href={href}
-                          className={`flex items-start gap-3 rounded-md p-3 hover:bg-accent ${
-                            isActive(href) ? "bg-accent" : ""
-                          }`}
-                          aria-current={isActive(href) ? "page" : undefined}
-                          onClick={() => setOpen(false)}
-                        >
-                          <Icon className="mt-0.5 h-5 w-5" aria-hidden="true" />
-                          <div className="flex flex-col">
-                            <span className="text-sm font-medium">{title}</span>
-                            <span className="text-xs text-muted-foreground">
-                              {description}
-                            </span>
-                          </div>
-                        </Link>
-                      </li>
-                    )
-                  )}
-                </ul>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-
-          <Link
-            href="/contact-us"
-            className={`rounded-md px-3 py-2 text-sm ${
-              isActive("/contact-us")
-                ? "bg-accent font-semibold"
-                : "hover:bg-accent"
-            }`}
-            aria-current={isActive("/contact-us") ? "page" : undefined}
-            onClick={() => setOpen(false)}
-          >
-            Contact Us
-          </Link>
-
-          <div className="px-3 py-2">
-            <EnhancedMortgageCalculator />
-          </div>
+            <Image
+              src={isDark ? LightLogo : Logo}
+              alt="Mortgage Arsenal"
+              className="h-8 w-auto"
+            />
+          </ClientOnly>
           <Button
-            variant="outline"
+            variant="ghost"
             size="icon"
-            className="cursor-pointer ml-2"
-            onClick={() => setTheme(isDark ? "light" : "dark")}
+            onClick={closeMenu}
+            className="h-8 w-8 rounded-full hover:bg-accent/50"
+            aria-label="Close menu"
           >
-            <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-            <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
-            <span className="sr-only">Toggle theme</span>
+            <X className="h-4 w-4" />
           </Button>
+        </div>
+
+        {/* Navigation Content */}
+        <div className="flex flex-col h-full">
+          {/* Main Navigation */}
+          <nav className="flex-1 px-6 py-4 space-y-1">
+            {/* Home */}
+            <Link
+              href="/"
+              className={`flex items-center gap-3 rounded-xl px-4 py-3 text-base font-medium transition-all duration-200 ${
+                isActive("/")
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "text-foreground hover:bg-accent/50 hover:text-accent-foreground"
+              }`}
+              onClick={closeMenu}
+            >
+              <Home className="h-5 w-5" />
+              Home
+            </Link>
+
+            {/* About Section */}
+            <div className="space-y-1">
+              <div className="px-4 py-2">
+                <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                  About Us
+                </h3>
+              </div>
+
+              {aboutLinks.map(({ title, href, icon: Icon, description }) => (
+                <Link
+                  key={title}
+                  href={href}
+                  className={`flex items-start gap-3 rounded-xl px-4 py-3 transition-all duration-200 group ${
+                    isActive(href)
+                      ? "bg-primary text-primary-foreground shadow-sm"
+                      : "text-foreground hover:bg-accent/50 hover:text-accent-foreground"
+                  }`}
+                  onClick={closeMenu}
+                >
+                  <Icon className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-sm font-medium">{title}</span>
+                    <span className="text-xs text-muted-foreground group-hover:text-accent-foreground/70">
+                      {description}
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            {/* Contact */}
+            <Link
+              href="/contact-us"
+              className={`flex items-center gap-3 rounded-xl px-4 py-3 text-base font-medium transition-all duration-200 ${
+                isActive("/contact-us")
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "text-foreground hover:bg-accent/50 hover:text-accent-foreground"
+              }`}
+              onClick={closeMenu}
+            >
+              <MessageCircle className="h-5 w-5" />
+              Contact Us
+            </Link>
+          </nav>
+
+          {/* Bottom Section - Calculator & Theme Toggle */}
+          <div className="border-t border-border/50 p-6 space-y-4">
+            {/* Mortgage Calculator */}
+            <div className="space-y-2">
+              <h3 className="text-sm font-semibold text-foreground">
+                Quick Tools
+              </h3>
+              <div className="p-4 bg-muted/30 rounded-xl border border-border/50">
+                <EnhancedMortgageCalculator />
+              </div>
+            </div>
+
+            {/* Theme Toggle */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Sun className="h-4 w-4 text-muted-foreground" />
+                <span className="text-sm font-medium">Theme</span>
+              </div>
+              <ClientOnly
+                fallback={<div className="h-9 w-16 rounded-full bg-muted" />}
+              >
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setTheme(isDark ? "light" : "dark")}
+                  className="h-9 w-16 rounded-full border-border/50 hover:bg-accent/50 transition-all duration-200"
+                >
+                  <div className="flex items-center justify-center gap-1">
+                    {isDark ? (
+                      <>
+                        <Sun className="h-3 w-3" />
+                        <span className="text-xs">Light</span>
+                      </>
+                    ) : (
+                      <>
+                        <Moon className="h-3 w-3" />
+                        <span className="text-xs">Dark</span>
+                      </>
+                    )}
+                  </div>
+                </Button>
+              </ClientOnly>
+            </div>
+
+            {/* Company Info */}
+            <div className="pt-2 border-t border-border/30">
+              <p className="text-xs text-muted-foreground text-center">
+                Mortgage Arsenal
+              </p>
+              <p className="text-xs text-muted-foreground text-center mt-1">
+                Alternative Real Estate Lending
+              </p>
+            </div>
+          </div>
         </div>
       </SheetContent>
     </Sheet>

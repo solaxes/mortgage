@@ -134,18 +134,18 @@ export default function EnhancedMortgageCalculator() {
           {/* Input Sliders */}
           <div className="space-y-4 p-4 bg-muted/50 rounded-xl">
             <Slider
-              min={100000}
+              min={1000}
               max={5000000}
               value={principal}
               onChange={setPrincipal}
-              step={10000}
+              step={1000}
               label="Loan Amount"
               format={formatCurrency}
             />
 
             <Slider
               min={1}
-              max={15}
+              max={25}
               value={interestRate}
               onChange={setInterestRate}
               step={0.1}
@@ -154,7 +154,7 @@ export default function EnhancedMortgageCalculator() {
             />
 
             <Slider
-              min={5}
+              min={1}
               max={40}
               value={loanTerm}
               onChange={setLoanTerm}
