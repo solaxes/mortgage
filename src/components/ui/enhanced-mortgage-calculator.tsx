@@ -282,9 +282,9 @@ export default function EnhancedMortgageCalculator() {
                 )}
 
                 {activeTab === "breakdown" && (
-                  <div className="space-y-4">
-                    <div className="text-center mb-4">
-                      <h3 className="text-lg font-semibold mb-2">
+                  <div className="space-y-3">
+                    <div className="text-center mb-3">
+                      <h3 className="text-lg font-semibold mb-1">
                         Yearly Payment Breakdown
                       </h3>
                       <p className="text-sm text-muted-foreground">
@@ -293,43 +293,43 @@ export default function EnhancedMortgageCalculator() {
                       </p>
                     </div>
 
-                    <div className="max-h-96 overflow-y-auto">
+                    <div className="max-h-80 overflow-y-auto">
                       <div className="space-y-2">
                         {calculation.yearlyBreakdown.map((year) => (
                           <div
                             key={year.year}
-                            className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"
+                            className="p-3 border rounded-lg hover:bg-muted/50 transition-colors"
                           >
                             <div className="flex items-center justify-between mb-2">
-                              <h4 className="font-semibold">
+                              <h4 className="font-semibold text-sm">
                                 Year {year.year}
                               </h4>
-                              <div className="text-sm text-muted-foreground">
+                              <div className="text-xs text-muted-foreground">
                                 Balance: {formatCurrency(year.remainingBalance)}
                               </div>
                             </div>
-                            <div className="grid grid-cols-2 gap-4 text-sm">
+                            <div className="grid grid-cols-2 gap-3 text-sm">
                               <div>
-                                <div className="text-muted-foreground">
+                                <div className="text-xs text-muted-foreground">
                                   Principal Paid
                                 </div>
-                                <div className="font-semibold text-green-600">
+                                <div className="font-semibold text-green-600 text-sm">
                                   {formatCurrency(year.principalPaid)}
                                 </div>
                               </div>
                               <div>
-                                <div className="text-muted-foreground">
+                                <div className="text-xs text-muted-foreground">
                                   Interest Paid
                                 </div>
-                                <div className="font-semibold text-red-600">
+                                <div className="font-semibold text-red-600 text-sm">
                                   {formatCurrency(year.interestPaid)}
                                 </div>
                               </div>
                             </div>
                             <div className="mt-2">
-                              <div className="w-full bg-gray-200 rounded-full h-2">
+                              <div className="w-full bg-gray-200 rounded-full h-1.5">
                                 <div
-                                  className="bg-gradient-to-r from-green-500 to-red-500 h-2 rounded-full"
+                                  className="bg-gradient-to-r from-green-500 to-red-500 h-1.5 rounded-full"
                                   style={{
                                     width: `${
                                       (year.principalPaid /
