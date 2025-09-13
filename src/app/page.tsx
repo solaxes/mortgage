@@ -1,6 +1,5 @@
 import Hero from "@/components/sections/hero";
 import Stats from "@/components/sections/stats";
-import FeatureCards from "@/components/sections/feature-cards";
 import Testimonials from "@/components/sections/testimonials";
 import Process from "@/components/sections/process";
 import Values from "@/components/sections/values";

@@ -9,7 +9,6 @@ import {
   Phone,
   Mail,
   Clock,
-  MessageSquare,
   Send,
   CheckCircle,
   AlertCircle,
@@ -372,8 +371,9 @@ export default function ContactUs() {
                 </h3>
                 <p className="text-sm text-muted-foreground">
                   Required documentation includes property details, financial
-                  statements, project plans, and borrower information. We'll
-                  provide a complete checklist during the application process.
+                  statements, project plans, and borrower information.
+                  We&apos;ll provide a complete checklist during the application
+                  process.
                 </p>
               </div>
               <div className="border rounded-lg p-6">

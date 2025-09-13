@@ -35,7 +35,7 @@ export default function Testimonials({ items }: { items: Testimonial[] }) {
               </svg>
             </div>
             <blockquote className="text-sm text-muted-foreground mb-4">
-              "{testimonial.quote}"
+              &ldquo;{testimonial.quote}&rdquo;
             </blockquote>
             <div>
               <div className="font-semibold text-sm">{testimonial.author}</div>

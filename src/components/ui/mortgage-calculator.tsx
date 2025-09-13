@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -27,7 +27,7 @@ export default function MortgageCalculator() {
     null
   );
 
-  const calculateMortgage = () => {
+  const calculateMortgage = useCallback(() => {
     const P = parseFloat(principal);
     const r = parseFloat(interestRate) / 100 / 12; // Monthly interest rate
     const n = parseFloat(loanTerm) * 12; // Total number of payments
@@ -44,11 +44,11 @@ export default function MortgageCalculator() {
         totalAmount,
       });
     }
-  };
+  }, [principal, interestRate, loanTerm]);
 
   useEffect(() => {
     calculateMortgage();
-  }, [principal, interestRate, loanTerm]);
+  }, [calculateMortgage]);
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("en-CA", {
