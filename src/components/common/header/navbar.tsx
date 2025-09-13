@@ -174,8 +174,10 @@ function MobileNav({ pathname }: { pathname?: string | null }) {
     href === "/" ? pathname === "/" : pathname?.startsWith(href);
   const { theme, setTheme } = useTheme();
   const isDark = theme === "dark";
+  const [open, setOpen] = React.useState(false);
+
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
         aria-label="Open menu"
         className="inline-flex h-9 w-9 items-center justify-center rounded-md border bg-background hover:bg-accent"
@@ -195,6 +197,7 @@ function MobileNav({ pathname }: { pathname?: string | null }) {
               isActive("/") ? "bg-accent font-semibold" : "hover:bg-accent"
             }`}
             aria-current={isActive("/") ? "page" : undefined}
+            onClick={() => setOpen(false)}
           >
             Home
           </Link>
@@ -216,6 +219,7 @@ function MobileNav({ pathname }: { pathname?: string | null }) {
                             isActive(href) ? "bg-accent" : ""
                           }`}
                           aria-current={isActive(href) ? "page" : undefined}
+                          onClick={() => setOpen(false)}
                         >
                           <Icon className="mt-0.5 h-5 w-5" aria-hidden="true" />
                           <div className="flex flex-col">
@@ -241,6 +245,7 @@ function MobileNav({ pathname }: { pathname?: string | null }) {
                 : "hover:bg-accent"
             }`}
             aria-current={isActive("/contact-us") ? "page" : undefined}
+            onClick={() => setOpen(false)}
           >
             Contact Us
           </Link>

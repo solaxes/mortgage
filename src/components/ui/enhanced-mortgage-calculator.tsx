@@ -10,25 +10,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-  Calculator,
-  DollarSign,
-  Percent,
-  Calendar,
-  TrendingUp,
-  PieChart,
-} from "lucide-react";
+import { Calculator } from "lucide-react";
 
 interface MortgageCalculation {
   monthlyPayment: number;
   totalInterest: number;
   totalAmount: number;
-  yearlyBreakdown: Array<{
-    year: number;
-    principalPaid: number;
-    interestPaid: number;
-    remainingBalance: number;
-  }>;
 }
 
 interface SliderProps {
@@ -89,9 +76,6 @@ export default function EnhancedMortgageCalculator() {
   const [calculation, setCalculation] = useState<MortgageCalculation | null>(
     null
   );
-  const [activeTab, setActiveTab] = useState<"summary" | "breakdown">(
-    "summary"
-  );
 
   const calculateMortgage = () => {
     const P = principal;
@@ -104,36 +88,10 @@ export default function EnhancedMortgageCalculator() {
       const totalAmount = monthlyPayment * n;
       const totalInterest = totalAmount - P;
 
-      // Calculate yearly breakdown
-      const yearlyBreakdown = [];
-      let remainingBalance = P;
-
-      for (let year = 1; year <= loanTerm; year++) {
-        let yearlyPrincipal = 0;
-        let yearlyInterest = 0;
-
-        for (let month = 1; month <= 12; month++) {
-          const interestPayment = remainingBalance * r;
-          const principalPayment = monthlyPayment - interestPayment;
-
-          yearlyInterest += interestPayment;
-          yearlyPrincipal += principalPayment;
-          remainingBalance -= principalPayment;
-        }
-
-        yearlyBreakdown.push({
-          year,
-          principalPaid: yearlyPrincipal,
-          interestPaid: yearlyInterest,
-          remainingBalance: Math.max(0, remainingBalance),
-        });
-      }
-
       setCalculation({
         monthlyPayment,
         totalInterest,
         totalAmount,
-        yearlyBreakdown,
       });
     }
   };
@@ -205,155 +163,52 @@ export default function EnhancedMortgageCalculator() {
             />
           </div>
 
-          {/* Results Tabs */}
-          <div className="space-y-3">
-            <div className="flex space-x-1 bg-muted p-1 rounded-lg">
-              <button
-                onClick={() => setActiveTab("summary")}
-                className={`flex-1 py-2 px-3 rounded-md text-sm font-medium transition-colors ${
-                  activeTab === "summary"
-                    ? "bg-background text-foreground shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <DollarSign className="h-4 w-4 inline mr-2" />
-                Summary
-              </button>
-              <button
-                onClick={() => setActiveTab("breakdown")}
-                className={`flex-1 py-2 px-3 rounded-md text-sm font-medium transition-colors ${
-                  activeTab === "breakdown"
-                    ? "bg-background text-foreground shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <TrendingUp className="h-4 w-4 inline mr-2" />
-                Yearly Breakdown
-              </button>
-            </div>
-
-            {calculation && (
-              <div className="space-y-4">
-                {activeTab === "summary" && (
-                  <div className="space-y-3">
-                    {/* Main Payment Display */}
-                    <div className="text-center p-4 bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl border">
-                      <div className="text-2xl font-bold text-primary mb-1">
-                        {formatCurrency(calculation.monthlyPayment)}
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        Monthly Payment
-                      </div>
-                    </div>
-
-                    {/* Summary Cards */}
-                    <div className="grid grid-cols-3 gap-3">
-                      <div className="p-3 border rounded-lg text-center">
-                        <div className="text-lg font-bold text-primary mb-1">
-                          {formatCurrency(calculation.totalAmount)}
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          Total Amount
-                        </div>
-                      </div>
-                      <div className="p-3 border rounded-lg text-center">
-                        <div className="text-lg font-bold text-primary mb-1">
-                          {formatCurrency(calculation.totalInterest)}
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          Total Interest
-                        </div>
-                      </div>
-                      <div className="p-3 border rounded-lg text-center">
-                        <div className="text-lg font-bold text-primary mb-1">
-                          {(
-                            (calculation.totalInterest /
-                              calculation.totalAmount) *
-                            100
-                          ).toFixed(1)}
-                          %
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          Interest Ratio
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {activeTab === "breakdown" && (
-                  <div className="space-y-3">
-                    <div className="text-center mb-3">
-                      <h3 className="text-lg font-semibold mb-1">
-                        Yearly Payment Breakdown
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        See how your payments are distributed between principal
-                        and interest over time
-                      </p>
-                    </div>
-
-                    <div className="max-h-80 overflow-y-auto">
-                      <div className="space-y-2">
-                        {calculation.yearlyBreakdown.map((year) => (
-                          <div
-                            key={year.year}
-                            className="p-3 border rounded-lg hover:bg-muted/50 transition-colors"
-                          >
-                            <div className="flex items-center justify-between mb-2">
-                              <h4 className="font-semibold text-sm">
-                                Year {year.year}
-                              </h4>
-                              <div className="text-xs text-muted-foreground">
-                                Balance: {formatCurrency(year.remainingBalance)}
-                              </div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-3 text-sm">
-                              <div>
-                                <div className="text-xs text-muted-foreground">
-                                  Principal Paid
-                                </div>
-                                <div className="font-semibold text-green-600 text-sm">
-                                  {formatCurrency(year.principalPaid)}
-                                </div>
-                              </div>
-                              <div>
-                                <div className="text-xs text-muted-foreground">
-                                  Interest Paid
-                                </div>
-                                <div className="font-semibold text-red-600 text-sm">
-                                  {formatCurrency(year.interestPaid)}
-                                </div>
-                              </div>
-                            </div>
-                            <div className="mt-2">
-                              <div className="w-full bg-gray-200 rounded-full h-1.5">
-                                <div
-                                  className="bg-gradient-to-r from-green-500 to-red-500 h-1.5 rounded-full"
-                                  style={{
-                                    width: `${
-                                      (year.principalPaid /
-                                        (year.principalPaid +
-                                          year.interestPaid)) *
-                                      100
-                                    }%`,
-                                  }}
-                                />
-                              </div>
-                              <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                                <span>Principal</span>
-                                <span>Interest</span>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
+          {/* Results */}
+          {calculation && (
+            <div className="space-y-3">
+              {/* Main Payment Display */}
+              <div className="text-center p-4 bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl border">
+                <div className="text-2xl font-bold text-primary mb-1">
+                  {formatCurrency(calculation.monthlyPayment)}
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  Monthly Payment
+                </div>
               </div>
-            )}
-          </div>
+
+              {/* Summary Cards */}
+              <div className="grid grid-cols-3 gap-3">
+                <div className="p-3 border rounded-lg text-center">
+                  <div className="text-lg font-bold text-primary mb-1">
+                    {formatCurrency(calculation.totalAmount)}
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    Total Amount
+                  </div>
+                </div>
+                <div className="p-3 border rounded-lg text-center">
+                  <div className="text-lg font-bold text-primary mb-1">
+                    {formatCurrency(calculation.totalInterest)}
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    Total Interest
+                  </div>
+                </div>
+                <div className="p-3 border rounded-lg text-center">
+                  <div className="text-lg font-bold text-primary mb-1">
+                    {(
+                      (calculation.totalInterest / calculation.totalAmount) *
+                      100
+                    ).toFixed(1)}
+                    %
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    Interest Ratio
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </DialogContent>
     </Dialog>

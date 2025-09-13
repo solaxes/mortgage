@@ -42,31 +42,6 @@ export default function Home() {
         />
       </ScrollAnimation>
 
-      <ScrollAnimation delay={0.2}>
-        <FeatureCards
-          items={[
-            {
-              title: "Commercial Lending",
-              desc: "Tailored mortgage solutions for developers and real estate investors across Canada. We provide construction, bridge, and income property financing.",
-              href: "/who-we-are",
-              badge: "Swift execution",
-            },
-            {
-              title: "Residential Lending",
-              desc: "Flexible residential financing for borrowers outside traditional lending. Alternative solutions for self-employed, new immigrants, and unique situations.",
-              href: "/who-we-are",
-              badge: "Flexible options",
-            },
-            {
-              title: "Investment Solutions",
-              desc: "Comprehensive investment opportunities for accredited investors seeking stable returns in Canadian real estate markets.",
-              href: "/who-we-are",
-              badge: "Stable returns",
-            },
-          ]}
-        />
-      </ScrollAnimation>
-
       <ScrollAnimation delay={0.4}>
         <Values
           items={[
