@@ -9,7 +9,16 @@ import { Button } from "@/components/ui/button";
 import {
   UsersIcon,
   UserCogIcon,
-  TrendingUpIcon,
+  Goal,
+  Landmark,
+  Building2,
+  Home,
+  FileText,
+  BarChart3,
+  Newspaper,
+  ScrollText,
+  ShieldCheck,
+  LineChart,
   MenuIcon,
   Moon,
   Sun,
@@ -50,8 +59,9 @@ import {
 
 import Logo from "@/assets/logo.png";
 import LightLogo from "@/assets/LightLogo.png";
+import EnhancedMortgageCalculator from "@/components/ui/enhanced-mortgage-calculator";
 
-const components: {
+const aboutLinks: {
   title: string;
   href: string;
   icon: LucideIcon;
@@ -62,21 +72,21 @@ const components: {
     href: "/who-we-are",
     icon: UsersIcon,
     description:
-      "Driven by passion, we create scalable solutions that empower businesses to grow and innovate.",
+      "Public. Proven. Trusted. Learn more about our history and mission.",
+  },
+  {
+    title: "Our Purpose",
+    href: "/our-purpose",
+    icon: Goal,
+    description:
+      "Our vision is to define the standard of excellence in lending.",
   },
   {
     title: "Our Team",
     href: "/our-team",
     icon: UserCogIcon,
     description:
-      "A talented group of engineers and designers with 18+ years’ expertise delivering reliable technology.",
-  },
-  {
-    title: "Why Choose Us",
-    href: "/why-choose-us",
-    icon: TrendingUpIcon,
-    description:
-      "From small beginnings to global projects, our journey reflects trust, innovation, and partnerships.",
+      "Meet the leadership and professionals behind swift execution.",
   },
 ];
 
@@ -123,7 +133,7 @@ export function Navbar() {
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[460px] gap-2 p-3 sm:w-[520px] md:w-[560px] md:grid-cols-1 lg:w-[420px]">
-                    {components.map((component) => (
+                    {aboutLinks.map((component) => (
                       <ListItem
                         key={component.title}
                         title={component.title}
@@ -145,6 +155,10 @@ export function Navbar() {
                 >
                   <Link href="/contact-us">Contact Us</Link>
                 </NavigationMenuLink>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <EnhancedMortgageCalculator />
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Button
@@ -209,7 +223,7 @@ function MobileNav({ pathname }: { pathname?: string | null }) {
               </AccordionTrigger>
               <AccordionContent className="px-1">
                 <ul className="flex flex-col gap-1">
-                  {components.map(
+                  {aboutLinks.map(
                     ({ title, href, icon: Icon, description }) => (
                       <li key={title}>
                         <Link
@@ -246,6 +260,10 @@ function MobileNav({ pathname }: { pathname?: string | null }) {
           >
             Contact Us
           </Link>
+
+          <div className="px-3 py-2">
+            <EnhancedMortgageCalculator />
+          </div>
           <Button
             variant="outline"
             size="icon"
