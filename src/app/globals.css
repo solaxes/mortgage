@@ -1,8 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* @custom-variant is a Tailwind CSS v4 directive */
 @custom-variant dark (&:is(.dark *));
 
+/* @theme is a Tailwind CSS v4 directive */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -143,9 +145,11 @@
 
 @layer base {
   * {
+    /* @apply is a Tailwind CSS directive */
     @apply border-border outline-ring/50;
   }
   body {
+    /* @apply is a Tailwind CSS directive */
     @apply bg-background text-foreground;
   }
 }

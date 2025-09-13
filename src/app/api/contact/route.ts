@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,27 +14,56 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { error: "Invalid email format" },
+        { status: 400 }
+      );
+    }
 
-    // Here you would typically send an email using a service like:
-    // - SendGrid
-    // - Nodemailer
-    // - Resend
-    // - AWS SES
+    // Check if environment variables are properly set
+    if (!process.env.SMTP_USER || !process.env.SMTP_PASSWORD) {
+      console.error("Missing required environment variables");
+      return NextResponse.json(
+        { error: "Server configuration error" },
+        { status: 500 }
+      );
+    }
 
-    // For now, we'll just log the data and return success
-    console.log("Contact form submission:", {
-      firstName,
-      lastName,
-      email,
-      phone,
-      company,
-      subject,
-      message,
-      timestamp: new Date().toISOString(),
+    // Create transporter
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASSWORD,
+      },
     });
 
-    // Simulate email sending delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // Email content
+    const mailOptions = {
+      from: process.env.SMTP_USER,
+      to: process.env.TO_EMAIL,
+      subject: `New Contact Form Submission: ${subject || "No Subject"}`,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
+        <p><strong>Company:</strong> ${company || "Not provided"}</p>
+        <p><strong>Subject:</strong> ${subject || "Not provided"}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+        <p><em>Sent on: ${new Date().toLocaleString()}</em></p>
+      `,
+    };
+
+    console.log("Sending email to:", process.env.TO_EMAIL);
+    // Send email
+    await transporter.sendMail(mailOptions);
 
     return NextResponse.json(
       {
