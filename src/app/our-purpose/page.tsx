@@ -31,10 +31,10 @@ export default function OurPurpose() {
                 <Target className="h-16 w-16 text-primary mx-auto mb-6" />
                 <h2 className="text-3xl font-semibold mb-6">Our Mission</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  To provide innovative, flexible, and reliable financing
-                  solutions that empower real estate developers and investors to
-                  achieve their goals while contributing to the growth and
-                  prosperity of Canadian communities.
+                  Our mission is to deliver quick, tailored, and reliable lending 
+                  solutions for individual owners, real estate investors, and businesses 
+                  in need of capital. We help individuals and businesses who are looking 
+                  for private funds in a timely manner in the tough banking environment.
                 </p>
               </div>
             </div>
@@ -49,10 +49,10 @@ export default function OurPurpose() {
                 <Eye className="h-16 w-16 text-primary mx-auto mb-6" />
                 <h2 className="text-3xl font-semibold mb-6">Our Vision</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  To be the leading alternative real estate lender in Canada,
-                  recognized for our innovation, integrity, and commitment to
-                  client success. We envision a future where every viable real
-                  estate project has access to the financing it needs to thrive.
+                  Our objective is to help individuals and businesses who are looking 
+                  for private funds in a timely manner in the tough banking environment. 
+                  We envision a future where every viable real estate project has access 
+                  to the financing it needs to thrive, even when traditional banks say no.
                 </p>
               </div>
             </div>
@@ -211,43 +211,44 @@ export default function OurPurpose() {
                 <TrendingUp className="h-16 w-16 text-primary mx-auto mb-6" />
                 <h2 className="text-3xl font-semibold mb-6">Our Impact</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                  Since 2001, we have helped fund over 2,000 real estate
-                  projects across Canada, contributing to the development of
-                  communities and the growth of the Canadian economy. Our
-                  commitment to excellence and innovation continues to drive us
-                  forward.
+                  Since 2023, Mortgage Arsenal has been providing alternative financing 
+                  solutions when traditional banks say no. During the 2023–2025 property 
+                  market crisis, as banks tightened their lending policies, we stepped in 
+                  to fill the gap — offering borrowers flexible, fast, and fair private 
+                  funding options. Our commitment to excellence and innovation continues to 
+                  drive us forward.
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                   <div className="text-center">
                     <div className="text-3xl font-bold text-primary mb-2">
-                      $2.0B+
+                      24-48hrs
                     </div>
                     <div className="text-sm text-muted-foreground">
-                      Total Funded
+                      Quick Approval
                     </div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-primary mb-2">
-                      2,000+
+                      2023
                     </div>
                     <div className="text-sm text-muted-foreground">
-                      Projects Funded
+                      Founded
                     </div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-primary mb-2">
-                      15+
+                      38+ Years
                     </div>
                     <div className="text-sm text-muted-foreground">
-                      Cities Served
+                      CEO Experience
                     </div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-primary mb-2">
-                      24+
+                      Canada
                     </div>
                     <div className="text-sm text-muted-foreground">
-                      Years of Service
+                      Nationwide Service
                     </div>
                   </div>
                 </div>

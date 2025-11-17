@@ -11,19 +11,19 @@ export default function Home() {
   return (
     <>
       <Hero
-        eyebrow="Public. Proven. Trusted."
+        eyebrow="Quick. Reliable. Trusted."
         title={
           <>
-            Mortgage Arsenal is a leading{" "}
-            <span className="text-primary">alternative</span> real estate lender
-            in Canada.
+            Mortgage Arsenal provides{" "}
+            <span className="text-primary">alternative</span> financing when
+            traditional banks say no.
           </>
         }
         subtitle={
           <>
-            Built to move fast, structure creatively, and lend with confidence —
-            for commercial and residential borrowers across major Canadian
-            markets.
+            We deliver quick, tailored, and reliable lending solutions for
+            individual owners, real estate investors, and businesses in need of
+            capital across Canada.
           </>
         }
         primaryCta={{ href: "/who-we-are", label: "Learn More" }}
@@ -33,10 +33,10 @@ export default function Home() {
       <ScrollAnimation>
         <Stats
           items={[
-            { value: "$2.0B+", label: "Total funded historically" },
-            { value: "24+", label: "Years in market" },
-            { value: "TSX: MAR", label: "Publicly listed MIC" },
-            { value: "2,000+", label: "Mortgages funded" },
+            { value: "24-48hrs", label: "Quick approval turnaround" },
+            { value: "2023", label: "Founded" },
+            { value: "38+ Years", label: "CEO banking experience" },
+            { value: "1st & 2nd", label: "Mortgage solutions" },
           ]}
         />
       </ScrollAnimation>
@@ -48,37 +48,37 @@ export default function Home() {
               icon: <Shield className="w-full h-full" />,
               title: "Reliability",
               description:
-                "Consistent, dependable service with a track record of successful closings across all market conditions.",
+                "Conservative and transparent lending approach trusted by mortgage brokers, lawyers, and accountants.",
             },
             {
               icon: <Zap className="w-full h-full" />,
-              title: "Speed",
+              title: "Quick Approval",
               description:
-                "Fast turnaround times with responsive underwriting that gets deals done when timing matters most.",
+                "Fast turnaround with quick approval and turnaround in 24-48 hours, getting you the funding you need when timing matters most.",
             },
             {
               icon: <Users className="w-full h-full" />,
-              title: "Relationships",
+              title: "Trusted Network",
               description:
-                "Long-term partnerships built on trust, transparency, and mutual success with our clients.",
+                "Working closely with mortgage brokers, lawyers, and accountants who trust our conservative lending approach.",
             },
             {
               icon: <Target className="w-full h-full" />,
-              title: "Flexibility",
+              title: "Tailored Solutions",
               description:
-                "Creative structuring and tailored solutions that meet the unique needs of each project.",
+                "Personalized mortgage solutions for residential, commercial, and industrial properties that meet each borrower's unique needs.",
             },
             {
               icon: <Award className="w-full h-full" />,
-              title: "Excellence",
+              title: "Expert Leadership",
               description:
-                "Setting the standard for alternative lending with innovative approaches and superior execution.",
+                "Led by experienced professionals with 38+ years of banking experience, including 21 years with RBC Royal Bank.",
             },
             {
               icon: <TrendingUp className="w-full h-full" />,
-              title: "Growth",
+              title: "Innovative Approach",
               description:
-                "Supporting the growth of Canadian real estate through strategic financing and market expertise.",
+                "Rigorous due diligence and industry expertise to find high-quality mortgage investments in Canada's strong real estate market.",
             },
           ]}
         />
@@ -89,27 +89,27 @@ export default function Home() {
           items={[
             {
               number: "1",
-              title: "Application",
+              title: "Apply",
               description:
-                "Submit your project details and financial information through our streamlined application process.",
+                "Apply by email at info@mortgagearsenal.com or fill out the application form available on our website.",
             },
             {
               number: "2",
-              title: "Review",
+              title: "Quick Approval",
               description:
-                "Our experienced team conducts thorough due diligence and market analysis of your project.",
+                "Get quick approval and turnaround in 24-48 hours with our streamlined review process.",
             },
             {
               number: "3",
-              title: "Structuring",
+              title: "Legal Review",
               description:
-                "We create a customized financing solution tailored to your specific needs and timeline.",
+                "Provide lawyer details to our lender's lawyer for document preparation and review.",
             },
             {
               number: "4",
-              title: "Closing",
+              title: "Receive Funding",
               description:
-                "Fast, efficient closing process with clear communication throughout the final stages.",
+                "Receive funding as soon as documents are signed and all conditions are met, with flexible repayment options.",
             },
           ]}
         />

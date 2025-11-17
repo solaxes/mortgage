@@ -47,7 +47,7 @@ const aboutLinks: {
     href: "/who-we-are",
     icon: UsersIcon,
     description:
-      "Public. Proven. Trusted. Learn more about our history and mission.",
+      "Alternative financing when traditional banks say no. Learn more about our history and mission.",
   },
   {
     title: "Our Purpose",

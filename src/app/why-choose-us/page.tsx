@@ -31,11 +31,11 @@ export default function WhyChooseUs() {
                 <Shield className="h-8 w-8 text-primary" />
               </div>
               <h3 className="text-xl font-semibold mb-3">
-                Proven Track Record
+                Experienced Leadership
               </h3>
               <p className="text-muted-foreground">
-                Over $2B in successful transactions with a 99.8% completion rate
-                across all our lending programs.
+                Led by CEO with 38+ years of banking experience, including 21 years 
+                with RBC Royal Bank in credit, sales, and senior management roles.
               </p>
             </div>
 
@@ -43,10 +43,10 @@ export default function WhyChooseUs() {
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                 <Zap className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Rapid Response</h3>
+              <h3 className="text-xl font-semibold mb-3">Quick Approval</h3>
               <p className="text-muted-foreground">
-                Pre-approval in 24 hours, full underwriting in 5-7 days, and
-                closing in as little as 10 days.
+                Quick approval and turnaround in 24-48 hours, getting you the funding 
+                you need when timing matters most.
               </p>
             </div>
 
@@ -54,10 +54,10 @@ export default function WhyChooseUs() {
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                 <Users className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Expert Team</h3>
+              <h3 className="text-xl font-semibold mb-3">Conservative Approach</h3>
               <p className="text-muted-foreground">
-                Senior professionals with 15+ years average experience in real
-                estate finance and alternative lending.
+                Trusted by mortgage brokers, lawyers, and accountants for our 
+                conservative and transparent lending approach.
               </p>
             </div>
 
@@ -65,10 +65,10 @@ export default function WhyChooseUs() {
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                 <Award className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Flexible Solutions</h3>
+              <h3 className="text-xl font-semibold mb-3">Tailored Solutions</h3>
               <p className="text-muted-foreground">
-                Customized lending structures tailored to unique project
-                requirements and market conditions.
+                Personalized mortgage solutions for residential, commercial, and 
+                industrial properties that reflect each borrower&apos;s unique financial situation.
               </p>
             </div>
 
@@ -76,10 +76,10 @@ export default function WhyChooseUs() {
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                 <Clock className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">24/7 Support</h3>
+              <h3 className="text-xl font-semibold mb-3">Rigorous Due Diligence</h3>
               <p className="text-muted-foreground">
-                Dedicated relationship managers available around the clock to
-                address your needs and concerns.
+                Our innovative investment approach and rigorous due diligence process 
+                ensures we identify high-quality mortgage investments.
               </p>
             </div>
 
@@ -87,10 +87,10 @@ export default function WhyChooseUs() {
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                 <TrendingUp className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Market Leadership</h3>
+              <h3 className="text-xl font-semibold mb-3">When Banks Say No</h3>
               <p className="text-muted-foreground">
-                Pioneering innovative lending products and setting industry
-                standards for transparency and efficiency.
+                We provide alternative financing solutions when traditional banks 
+                can&apos;t deliver, especially during challenging market conditions.
               </p>
             </div>
           </div>
