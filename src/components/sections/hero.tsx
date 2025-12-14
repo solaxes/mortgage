@@ -78,14 +78,14 @@ export default function Hero({
           <div className="relative order-1 lg:order-2">
             <div className="relative rounded-2xl border bg-gradient-to-br from-primary/10 to-primary/5 p-6 sm:p-8 backdrop-blur-sm">
               {/* Floating stats cards - hidden on mobile */}
-              <div className="hidden sm:block absolute -top-4 -right-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 sm:p-4 animate-[float_3s_ease-in-out_infinite]">
+              {/* <div className="hidden sm:block absolute -top-4 -right-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 sm:p-4 animate-[float_3s_ease-in-out_infinite]">
                 <div className="text-lg sm:text-2xl font-bold text-primary">
                   $2.0B+
                 </div>
                 <div className="text-xs text-muted-foreground">
                   Total Funded
                 </div>
-              </div>
+              </div> */}
 
               <div className="hidden sm:block absolute -bottom-4 -left-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 sm:p-4 animate-[float_3s_ease-in-out_infinite_1s]">
                 <div className="text-lg sm:text-2xl font-bold text-primary">
@@ -106,21 +106,21 @@ export default function Hero({
                 <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
                   Why Choose Mortgage Arsenal?
                 </h3>
-                <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-muted-foreground">
-                  <div className="flex items-center justify-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-primary"></div>
+                <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-muted-foreground inline-block">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
                     <span>Swift 3-5 day processing</span>
                   </div>
-                  <div className="flex items-center justify-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-primary"></div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
                     <span>Flexible loan structures</span>
                   </div>
-                  <div className="flex items-center justify-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-primary"></div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
                     <span>Expert market knowledge</span>
                   </div>
-                  <div className="flex items-center justify-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-primary"></div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
                     <span>Personalized service</span>
                   </div>
                 </div>
