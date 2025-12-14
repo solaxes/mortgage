@@ -60,7 +60,7 @@ export default function Home() {
               icon: <Users className="w-full h-full" />,
               title: "Trusted Network",
               description:
-                "Working closely with mortgage brokers, lawyers, and accountants who trust our conservative lending approach.",
+                "Quick responses and transparent terms so everyone stays on the same page.",
             },
             {
               icon: <Target className="w-full h-full" />,
@@ -72,7 +72,7 @@ export default function Home() {
               icon: <Award className="w-full h-full" />,
               title: "Expert Leadership",
               description:
-                "Led by experienced professionals with 38+ years of banking experience, including 21 years with RBC Royal Bank.",
+                "Led by experienced professionals with 38+ years of banking and financial industry experience including 21 years with (RBC) Royal Bank of Canada.",
             },
             {
               icon: <TrendingUp className="w-full h-full" />,
@@ -116,7 +116,12 @@ export default function Home() {
       </ScrollAnimation>
 
       <ScrollAnimation delay={0.8}>
-        <Testimonials
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+
+          </h2>
+        </div>
+        {/* <Testimonials
           items={[
             {
               quote:
@@ -140,7 +145,7 @@ export default function Home() {
               company: "Walsh Development Corp",
             },
           ]}
-        />
+        /> */}
       </ScrollAnimation>
 
       <ScrollAnimation delay={1.0}>

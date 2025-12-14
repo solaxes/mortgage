@@ -105,9 +105,9 @@ export default function ContactUs() {
                     <div>
                       <h3 className="font-semibold mb-1">Head Office</h3>
                       <p className="text-muted-foreground">
-                        456 Granville Street, Suite 300
-                        <br />
-                        Vancouver, BC V6C 1T1
+                      290, Carlingview Drive<br/>
+                      Etobicoke M9W 5G1<br/>
+                      Ontario
                       </p>
                     </div>
                   </div>
@@ -119,9 +119,8 @@ export default function ContactUs() {
                     <div>
                       <h3 className="font-semibold mb-1">Phone</h3>
                       <p className="text-muted-foreground">
-                        Main: (416) 555-0100
+                        <strong>Main:</strong> +1 647 200 9422
                         <br />
-                        Toll-free: 1-800-555-0100
                       </p>
                     </div>
                   </div>
@@ -133,9 +132,8 @@ export default function ContactUs() {
                     <div>
                       <h3 className="font-semibold mb-1">Email</h3>
                       <p className="text-muted-foreground">
-                        General: info@mortgagearsenal.ca
+                        <strong>General:</strong> info@mortagearsenal.com
                         <br />
-                        Applications: applications@mortgagearsenal.ca
                       </p>
                     </div>
                   </div>
@@ -147,11 +145,8 @@ export default function ContactUs() {
                     <div>
                       <h3 className="font-semibold mb-1">Business Hours</h3>
                       <p className="text-muted-foreground">
-                        Monday - Friday: 8:00 AM - 6:00 PM
+                        9AM to 5PM Monday to Friday
                         <br />
-                        Saturday: 9:00 AM - 2:00 PM
-                        <br />
-                        Sunday: Closed
                       </p>
                     </div>
                   </div>
@@ -294,8 +289,8 @@ export default function ContactUs() {
         </div>
 
         {/* Map Placeholder */}
-        <ScrollAnimation delay={0.6}>
-          <div className="mt-16">
+        {/* <ScrollAnimation delay={0.6}>
+           <div className="mt-16">
             <h2 className="text-3xl font-semibold text-center mb-8">Find Us</h2>
             <div className="relative h-96 w-full rounded-2xl bg-gradient-to-r from-primary/10 to-primary/5 border-2 border-dashed border-primary/20 flex items-center justify-center">
               <div className="text-center">
@@ -309,7 +304,7 @@ export default function ContactUs() {
               </div>
             </div>
           </div>
-        </ScrollAnimation>
+        </ScrollAnimation> */}
 
         {/* FAQ Section */}
         <ScrollAnimation delay={0.8}>

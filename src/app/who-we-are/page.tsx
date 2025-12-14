@@ -25,10 +25,10 @@ export default function WhoWeAre() {
         <ScrollAnimation>
           <div className="text-center mb-16">
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Mortgage Arsenal provides alternative financing when traditional banks say no. 
-              Founded in 2023 by Fazal Nathani and Amandeep Gandhi, we began as a private 
-              lending business offering 1st and 2nd mortgages against residential and 
-              commercial properties. We are relationship-focused and known for reliability, 
+              Mortgage Arsenal provides alternative financing when traditional banks say no.
+              Founded in 2023 by Fazal Nathani and Amandeep Gandhi, we began as a private
+              lending business offering 1st and 2nd mortgages against residential and
+              commercial properties. We are relationship-focused and known for reliability,
               flexibility, and fast turnaround.
             </p>
           </div>
@@ -57,8 +57,8 @@ export default function WhoWeAre() {
             <h2 className="text-3xl font-semibold text-center mb-12">
               Our Core Values
             </h2>
-            <div className="grid gap-8 md:grid-cols-3">
-              <div className="text-center group">
+            <div className="grid gap-8 md:grid-cols-2">
+              {/* <div className="text-center group">
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                   <Shield className="h-8 w-8 text-primary" />
                 </div>
@@ -68,19 +68,17 @@ export default function WhoWeAre() {
                   providing transparency and accountability to our investors and
                   clients.
                 </p>
-              </div>
-              <div className="text-center group">
+              </div> */}
+              <div className="text-center group border-2 border-primary/20 rounded-2xl p-8">
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                   <Award className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Proven</h3>
                 <p className="text-muted-foreground">
-                  Over two decades of experience with a long track record of
-                  assessing and closing loans efficiently across all market
-                  conditions.
+                Over 2 years of experience with the brokers, accountant, lawyers and borrowers in timely closing the deals.
                 </p>
               </div>
-              <div className="text-center group">
+              <div className="text-center group border-2 border-primary/20 rounded-2xl p-8">
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                   <Users className="h-8 w-8 text-primary" />
                 </div>
@@ -101,37 +99,37 @@ export default function WhoWeAre() {
             <div className="prose prose-lg max-w-none">
               <div className="space-y-6 text-muted-foreground">
                 <p>
-                  Mortgage Arsenal was founded in 2023 by Fazal Nathani, an experienced 
-                  banker, stock market broker, and successful businessman, and Amandeep 
-                  Gandhi, an experienced businessman in the field of smoke and smoke 
-                  accessories. What began as a small private lending vertical under the 
-                  Arsenal Group of Companies started with conservative lending as 1st and 
-                  2nd mortgages against residential properties, using their own and family 
+                  Mortgage Arsenal was founded in 2023 by Fazal Nathani, an experienced
+                  banker, stock market broker, and successful businessman, and Amandeep
+                  Gandhi, an experienced businessman in the field of smoke and smoke
+                  accessories. What began as a small private lending vertical under the
+                  Arsenal Group of Companies started with conservative lending as 1st and
+                  2nd mortgages against residential properties, using their own and family
                   funds.
                 </p>
                 <p>
-                  Early business came primarily through referrals from mortgage brokers, 
-                  lawyers, and accountants who trusted the team&apos;s conservative and 
-                  transparent lending approach. Drawing on Fazal&apos;s extensive experience 
-                  as a banker, stock market broker, and successful entrepreneur, and 
-                  Amandeep&apos;s strong business background in multiple industry verticals, 
-                  Mortgage Arsenal began offering 1st and 2nd mortgages secured by residential 
+                  Early business came primarily through referrals from mortgage brokers,
+                  lawyers, and accountants who trusted the team&apos;s conservative and
+                  transparent lending approach. Drawing on Fazal&apos;s extensive experience
+                  as a banker, stock market broker, and successful entrepreneur, and
+                  Amandeep&apos;s strong business background in multiple industry verticals,
+                  Mortgage Arsenal began offering 1st and 2nd mortgages secured by residential
                   and commercial properties.
                 </p>
                 <p>
-                  In 2024, Shamim Junejo joined the company as Chief Executive Officer. With 
-                  over 38 years of international and Canadian banking experience, including 
-                  21 years with RBC Royal Bank in senior roles such as Vice President of Sales, 
-                  Shamim brought deep expertise in credit, lending, and strategic growth. 
-                  Under his leadership, the company adopted the business name &quot;Mortgage 
-                  Arsenal&quot; and renewed its focus on expanding its portfolio to include 
+                  In 2024, Shamim Junejo joined the company as Chief Executive Officer. With
+                  over 38 years of international and Canadian banking experience, including
+                  21 years with RBC Royal Bank in senior roles such as Vice President of Sales,
+                  Shamim brought deep expertise in credit, lending, and strategic growth.
+                  Under his leadership, the company adopted the business name &quot;Mortgage
+                  Arsenal&quot; and renewed its focus on expanding its portfolio to include
                   both residential and commercial mortgages across Canada.
                 </p>
                 <p>
-                  During the 2023–2025 property market crisis, as banks tightened their lending 
-                  policies and introduced tough lending guidelines, there was a growing need 
-                  in the market for private lending solutions. Mortgage Arsenal stepped in to 
-                  fill the gap — offering borrowers flexible, fast, and fair private funding 
+                  During the 2023–2025 property market crisis, as banks tightened their lending
+                  policies and introduced tough lending guidelines, there was a growing need
+                  in the market for private lending solutions. Mortgage Arsenal stepped in to
+                  fill the gap — offering borrowers flexible, fast, and fair private funding
                   options when traditional banks couldn&apos;t deliver.
                 </p>
               </div>
@@ -194,8 +192,8 @@ export default function WhoWeAre() {
                       Quick Approval & Turnaround
                     </h3>
                     <p className="text-muted-foreground">
-                      Our streamlined processes enable quick approval and turnaround 
-                      in 24-48 hours, getting you the funding you need when timing 
+                      Our streamlined processes enable quick approval and turnaround
+                      in 24-48 hours, getting you the funding you need when timing
                       matters most.
                     </p>
                   </div>
@@ -209,9 +207,9 @@ export default function WhoWeAre() {
                       Innovative Investment Approach
                     </h3>
                     <p className="text-muted-foreground">
-                      Our innovative approach to the investment selection process, 
-                      rigorous due diligence, and industry expertise allows us to 
-                      find high-quality mortgage investments that capitalize on 
+                      Our innovative approach to the investment selection process,
+                      rigorous due diligence, and industry expertise allows us to
+                      find high-quality mortgage investments that capitalize on
                       Canada&apos;s traditionally strong real estate market.
                     </p>
                   </div>
@@ -227,8 +225,8 @@ export default function WhoWeAre() {
                       Tailored Solutions
                     </h3>
                     <p className="text-muted-foreground">
-                      We offer borrowers a selection of tailored mortgage solutions 
-                      that are personalized to each borrower&apos;s unique needs, 
+                      We offer borrowers a selection of tailored mortgage solutions
+                      that are personalized to each borrower&apos;s unique needs,
                       whether residential, commercial, or industrial properties.
                     </p>
                   </div>
@@ -242,8 +240,8 @@ export default function WhoWeAre() {
                       Trusted Network
                     </h3>
                     <p className="text-muted-foreground">
-                      We work closely with mortgage brokers, lawyers, and accountants 
-                      who trust our conservative and transparent lending approach, 
+                      We work closely with mortgage brokers, lawyers, and accountants
+                      who trust our conservative and transparent lending approach,
                       building lasting relationships across the industry.
                     </p>
                   </div>
@@ -262,36 +260,48 @@ export default function WhoWeAre() {
             <TeamCarousel
               members={[
                 {
-                  name: "Shamim Junejo",
-                  position: "Chief Executive Officer",
-                  experience: "38+ years",
-                  education: "Banking & Finance",
-                  location: "Canada",
-                  email: "info@mortgagearsenal.com",
-                  phone: "",
-                  bio: "With over 38 years of international and Canadian banking experience, including 21 years with RBC Royal Bank in various capacities including credit, sales, and Vice President of Sales managing a sales team across Canada. Shamim brings deep expertise in structuring innovative funding solutions tailored to diverse client needs.",
-                  image: "shamim-junejo.jpg",
-                },
-                {
                   name: "Fazal Nathani",
-                  position: "Co-Founder",
+                  position: "Chairman",
                   experience: "Experienced",
                   education: "Banking & Finance",
                   location: "Canada",
-                  email: "info@mortgagearsenal.com",
+                  email: "info@mortagearsenal.com",
                   phone: "",
                   bio: "An experienced banker, stock market broker, and successful businessman. Fazal co-founded Mortgage Arsenal in 2023 with a vision to provide alternative financing solutions when traditional banks say no.",
                   image: "fazal-nathani.jpg",
                 },
                 {
+                  name: "Shamim Junejo",
+                  position: "CEO",
+                  experience: "38+ years",
+                  education: "Banking & Finance",
+                  location: "Canada",
+                  email: "info@mortagearsenal.com",
+                  phone: "",
+                  bio: "With over 38 years of international and Canadian banking experience, including 21 years with RBC Royal Bank in various capacities including credit, sales, and Vice President of Sales managing a sales team across Canada. Shamim brings deep expertise in structuring innovative funding solutions tailored to diverse client needs.",
+                  image: "shamim-junejo.jpg",
+                },
+
+                {
                   name: "Amandeep Gandhi",
-                  position: "Co-Founder",
+                  position: "Director",
                   experience: "Experienced",
                   education: "Business",
                   location: "Canada",
-                  email: "info@mortgagearsenal.com",
+                  email: "info@mortagearsenal.com",
                   phone: "",
                   bio: "An experienced businessman with a strong background in multiple industry verticals, including smoke and smoke accessories. Amandeep co-founded Mortgage Arsenal to provide flexible, reliable financing solutions.",
+                  image: "amandeep-gandhi.jpg",
+                },
+                {
+                  name: "Harpal Singh",
+                  position: "Chief Accountant",
+                  experience: "Experienced",
+                  education: "",
+                  location: "Canada",
+                  email: "info@mortagearsenal.com",
+                  phone: "",
+                  bio: "An experienced accountant with a strong background in accounting and finance.",
                   image: "amandeep-gandhi.jpg",
                 },
               ]}
