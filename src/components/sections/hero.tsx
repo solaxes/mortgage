@@ -85,7 +85,7 @@ export default function Hero({
                 <div className="text-xs text-muted-foreground">
                   Total Funded
                 </div>
-              </div> */}
+              </div>
 
               <div className="hidden sm:block absolute -bottom-4 -left-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 sm:p-4 animate-[float_3s_ease-in-out_infinite_1s]">
                 <div className="text-lg sm:text-2xl font-bold text-primary">
@@ -95,7 +95,7 @@ export default function Hero({
                   Years Experience
                 </div>
               </div>
-
+                */ }
               {/* Main content area */}
               <div className="text-center">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto mb-4 sm:mb-6 rounded-full bg-gradient-to-r from-primary to-primary/80 flex items-center justify-center animate-[pulse_2s_ease-in-out_infinite]">
