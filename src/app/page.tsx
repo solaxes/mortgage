@@ -1,4 +1,5 @@
 import Hero from "@/components/sections/hero";
+import Stats from "@/components/sections/stats";
 import Process from "@/components/sections/process";
 import Values from "@/components/sections/values";
 import CTA from "@/components/sections/cta";
@@ -27,6 +28,17 @@ export default function Home() {
         primaryCta={{ href: "/who-we-are", label: "Learn More" }}
         secondaryCta={{ href: "/contact-us", label: "Contact Us" }}
       />
+
+      <ScrollAnimation>
+        <Stats
+          items={[
+            { value: "24-48hrs", label: "Quick approval turnaround" },
+            { value: "2023", label: "Founded" },
+            { value: "38+ Years", label: "CEO banking experience" },
+            { value: "1st & 2nd", label: "Mortgage solutions" },
+          ]}
+        />
+      </ScrollAnimation>
 
       <ScrollAnimation delay={0.4}>
         <Values
