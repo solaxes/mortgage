@@ -71,22 +71,21 @@ function Slider({
 
 export default function EnhancedMortgageCalculator() {
   const [principal, setPrincipal] = useState<number>(500000);
-  const [interestRate, setInterestRate] = useState<number>(5.5);
-  const [loanTerm, setLoanTerm] = useState<number>(25);
+  const [interestRate, setInterestRate] = useState<number>(10);
+  const [loanTerm, setLoanTerm] = useState<number>(12);
   const [calculation, setCalculation] = useState<MortgageCalculation | null>(
     null
   );
 
   const calculateMortgage = useCallback(() => {
     const P = principal;
-    const r = interestRate / 100 / 12; // Monthly interest rate
-    const n = loanTerm * 12; // Total number of payments
+    const monthlyInterestRate = interestRate / 100 / 12;
+    const termInMonths = loanTerm;
 
-    if (P > 0 && r > 0 && n > 0) {
-      const monthlyPayment =
-        (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-      const totalAmount = monthlyPayment * n;
-      const totalInterest = totalAmount - P;
+    if (P > 0 && monthlyInterestRate > 0 && termInMonths > 0) {
+      const monthlyPayment = P * monthlyInterestRate;
+      const totalInterest = monthlyPayment * termInMonths;
+      const totalAmount = P + totalInterest;
 
       setCalculation({
         monthlyPayment,
@@ -123,10 +122,11 @@ export default function EnhancedMortgageCalculator() {
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Calculator className="h-5 w-5" />
-            Advanced Mortgage Calculator
+            Mortgage Calculator
           </DialogTitle>
           <DialogDescription>
-            Calculate your monthly payments and view detailed breakdowns
+            Calculate monthly interest-only payments for terms from 3 to 24
+            months.
           </DialogDescription>
         </DialogHeader>
 
@@ -134,8 +134,8 @@ export default function EnhancedMortgageCalculator() {
           {/* Input Sliders */}
           <div className="space-y-4 p-4 bg-muted/50 rounded-xl">
             <Slider
-              min={1000}
-              max={5000000}
+              min={100000}
+              max={2000000}
               value={principal}
               onChange={setPrincipal}
               step={1000}
@@ -144,8 +144,8 @@ export default function EnhancedMortgageCalculator() {
             />
 
             <Slider
-              min={1}
-              max={25}
+              min={5}
+              max={24}
               value={interestRate}
               onChange={setInterestRate}
               step={0.1}
@@ -154,12 +154,12 @@ export default function EnhancedMortgageCalculator() {
             />
 
             <Slider
-              min={1}
-              max={40}
+              min={3}
+              max={24}
               value={loanTerm}
               onChange={setLoanTerm}
               step={1}
-              label="Loan Term (Years)"
+              label="Loan Term (Months)"
             />
           </div>
 
@@ -172,7 +172,7 @@ export default function EnhancedMortgageCalculator() {
                   {formatCurrency(calculation.monthlyPayment)}
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  Monthly Payment
+                  Monthly Interest-Only Payment
                 </div>
               </div>
 
