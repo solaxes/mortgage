@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import {
@@ -73,31 +73,28 @@ export default function EnhancedMortgageCalculator() {
   const [principal, setPrincipal] = useState<number>(500000);
   const [interestRate, setInterestRate] = useState<number>(10);
   const [loanTerm, setLoanTerm] = useState<number>(12);
-  const [calculation, setCalculation] = useState<MortgageCalculation | null>(
-    null
-  );
-
-  const calculateMortgage = useCallback(() => {
-    const P = principal;
-    const monthlyInterestRate = interestRate / 100 / 12;
+  const calculation = useMemo<MortgageCalculation | null>(() => {
+    const principalAmount = principal;
+    const monthlyInterestRate = (interestRate / 100) / 12;
     const termInMonths = loanTerm;
+    const roundToCents = (value: number) => Math.round(value * 100) / 100;
 
-    if (P > 0 && monthlyInterestRate > 0 && termInMonths > 0) {
-      const monthlyPayment = P * monthlyInterestRate;
-      const totalInterest = monthlyPayment * termInMonths;
-      const totalAmount = P + totalInterest;
-
-      setCalculation({
-        monthlyPayment,
-        totalInterest,
-        totalAmount,
-      });
+    if (principalAmount <= 0 || monthlyInterestRate <= 0 || termInMonths <= 0) {
+      return null;
     }
-  }, [principal, interestRate, loanTerm]);
 
-  useEffect(() => {
-    calculateMortgage();
-  }, [calculateMortgage]);
+    // Simple interest-only model (no compounding):
+    // monthly interest depends on principal and rate only.
+    const monthlyPayment = roundToCents(principalAmount * monthlyInterestRate);
+    const totalInterest = roundToCents(monthlyPayment * termInMonths);
+    const totalAmount = roundToCents(principalAmount + totalInterest);
+
+    return {
+      monthlyPayment,
+      totalInterest,
+      totalAmount,
+    };
+  }, [principal, interestRate, loanTerm]);
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("en-CA", {
@@ -172,7 +169,7 @@ export default function EnhancedMortgageCalculator() {
                   {formatCurrency(calculation.monthlyPayment)}
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  Monthly Interest-Only Payment
+                  Monthly Interest
                 </div>
               </div>
 
