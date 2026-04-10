@@ -13,8 +13,9 @@ import {
 import { Calculator } from "lucide-react";
 
 interface MortgageCalculation {
-  monthlyInterest: number;
-  interestOverTerm: number;
+  monthlyPayment: number;
+  totalInterest: number;
+  totalAmount: number;
 }
 
 interface SliderProps {
@@ -69,28 +70,31 @@ function Slider({
 }
 
 export default function EnhancedMortgageCalculator() {
-  const [principal, setPrincipal] = useState<number>(500_000);
-  const [interestRate, setInterestRate] = useState<number>(10);
-  const [termMonths, setTermMonths] = useState<number>(12);
+  const [principal, setPrincipal] = useState<number>(500000);
+  const [interestRate, setInterestRate] = useState<number>(5.5);
+  const [loanTerm, setLoanTerm] = useState<number>(25);
   const [calculation, setCalculation] = useState<MortgageCalculation | null>(
     null
   );
 
   const calculateMortgage = useCallback(() => {
     const P = principal;
-    const annual = interestRate;
-    const months = termMonths;
+    const r = interestRate / 100 / 12; // Monthly interest rate
+    const n = loanTerm * 12; // Total number of payments
 
-    if (P > 0 && annual > 0 && months > 0) {
-      const monthlyInterest = (P * (annual / 100)) / 12;
-      const interestOverTerm = monthlyInterest * months;
+    if (P > 0 && r > 0 && n > 0) {
+      const monthlyPayment =
+        (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+      const totalAmount = monthlyPayment * n;
+      const totalInterest = totalAmount - P;
 
       setCalculation({
-        monthlyInterest,
-        interestOverTerm,
+        monthlyPayment,
+        totalInterest,
+        totalAmount,
       });
     }
-  }, [principal, interestRate, termMonths]);
+  }, [principal, interestRate, loanTerm]);
 
   useEffect(() => {
     calculateMortgage();
@@ -107,9 +111,6 @@ export default function EnhancedMortgageCalculator() {
     return `${value.toFixed(2)}%`;
   };
 
-  const formatMonths = (n: number) =>
-    `${n} ${n === 1 ? "month" : "months"}`;
-
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -122,74 +123,87 @@ export default function EnhancedMortgageCalculator() {
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Calculator className="h-5 w-5" />
-            Mortgage Calculator
+            Advanced Mortgage Calculator
           </DialogTitle>
           <DialogDescription>
-            Interest-only estimate: monthly payment is interest accrued on the
-            loan amount at the annual rate shown. Term sets the period for total
-            interest over that timeframe.
+            Calculate your monthly payments and view detailed breakdowns
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4 py-2">
+          {/* Input Sliders */}
           <div className="space-y-4 p-4 bg-muted/50 rounded-xl">
             <Slider
-              min={100_000}
-              max={2_000_000}
+              min={1000}
+              max={5000000}
               value={principal}
               onChange={setPrincipal}
-              step={5000}
-              label="Loan amount"
+              step={1000}
+              label="Loan Amount"
               format={formatCurrency}
             />
 
             <Slider
-              min={5}
-              max={24}
+              min={1}
+              max={25}
               value={interestRate}
               onChange={setInterestRate}
               step={0.1}
-              label="Interest rate (annual %)"
+              label="Interest Rate (%)"
               format={formatPercentage}
             />
 
             <Slider
-              min={3}
-              max={24}
-              value={termMonths}
-              onChange={setTermMonths}
+              min={1}
+              max={40}
+              value={loanTerm}
+              onChange={setLoanTerm}
               step={1}
-              label="Term (months)"
-              format={formatMonths}
+              label="Loan Term (Years)"
             />
           </div>
 
+          {/* Results */}
           {calculation && (
             <div className="space-y-3">
+              {/* Main Payment Display */}
               <div className="text-center p-4 bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl border">
                 <div className="text-2xl font-bold text-primary mb-1">
-                  {formatCurrency(calculation.monthlyInterest)}
+                  {formatCurrency(calculation.monthlyPayment)}
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  Monthly interest payment
+                  Monthly Payment
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              {/* Summary Cards */}
+              <div className="grid grid-cols-3 gap-3">
                 <div className="p-3 border rounded-lg text-center">
                   <div className="text-lg font-bold text-primary mb-1">
-                    {formatCurrency(calculation.interestOverTerm)}
+                    {formatCurrency(calculation.totalAmount)}
                   </div>
                   <div className="text-xs text-muted-foreground">
-                    Total interest over term
+                    Total Amount
                   </div>
                 </div>
                 <div className="p-3 border rounded-lg text-center">
                   <div className="text-lg font-bold text-primary mb-1">
-                    {formatCurrency(principal)}
+                    {formatCurrency(calculation.totalInterest)}
                   </div>
                   <div className="text-xs text-muted-foreground">
-                    Loan amount
+                    Total Interest
+                  </div>
+                </div>
+                <div className="p-3 border rounded-lg text-center">
+                  <div className="text-lg font-bold text-primary mb-1">
+                    {(
+                      (calculation.totalInterest / calculation.totalAmount) *
+                      100
+                    ).toFixed(1)}
+                    %
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    Interest Ratio
                   </div>
                 </div>
               </div>

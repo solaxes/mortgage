@@ -69,38 +69,6 @@ export default function OurTeam() {
         backgroundPattern="grid"
       />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        {/* Team Stats */}
-        <ScrollAnimation delay={0.2}>
-          <div className="mb-16">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 rounded-2xl border p-8 bg-gradient-to-r from-primary/5 to-primary/10">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">25+</div>
-                <div className="text-sm text-muted-foreground">
-                  Years Combined Experience
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">50+</div>
-                <div className="text-sm text-muted-foreground">
-                  Team Members
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">15+</div>
-                <div className="text-sm text-muted-foreground">
-                  Cities Served
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">98%</div>
-                <div className="text-sm text-muted-foreground">
-                  Client Satisfaction
-                </div>
-              </div>
-            </div>
-          </div>
-        </ScrollAnimation>
-
         {/* Leadership Team */}
         <ScrollAnimation delay={0.4}>
           <div className="mb-16">
